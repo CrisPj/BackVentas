@@ -1,0 +1,48 @@
+group 'com.pythonteam'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply from: 'https://raw.github.com/gretty-gradle-plugin/gretty/master/pluginScripts/gretty.plugin'
+
+gretty {
+    servletContainer = 'tomcat8'
+    host = '0.0.0.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    // bcrypt
+    compile group: 'org.mindrot', name: 'jbcrypt', version: '0.4'
+
+    //javax
+    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
+    compile group: 'javax.activation', name: 'activation', version: '1.1.1'
+
+    //jersey
+    compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.27'
+    compile 'org.glassfish.jersey.inject:jersey-hk2:2.27'
+    compile group: 'org.glassfish.jersey.core', name: 'jersey-common', version: '2.27'
+    compile group: 'org.glassfish.jersey.media', name: 'jersey-media-json-jackson', version: '2.27'
+
+    //HikariCP
+    compile group: 'com.zaxxer', name: 'HikariCP', version: '3.1.0'
+
+    //Jackson
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.5'
+    compile group: 'com.fasterxml.jackson.module', name: 'jackson-modules-java8', version: '2.9.5', ext: 'pom'
+
+
+    //Postgresql
+    compile group: 'org.postgresql', name: 'postgresql', version: '42.2.2'
+
+    //JDBI
+    compile 'org.jdbi:jdbi3-core:3.1.1'
+    compile 'org.jdbi:jdbi3-sqlobject:3.1.1'
+    compile 'org.jdbi:jdbi3-postgres:3.1.1'
+
+}
